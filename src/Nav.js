@@ -1,9 +1,13 @@
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment } from "react";
+import { Link } from "react-router-dom";
+import "./css/nav.css";
 
+const Nav = (props) => {
+    const [isActive, setActive] = useState(false);
 
-
-function Nav(props) {
+    const toggleClass = () => {
+        setActive(!isActive);
+    };
 
     login = () => {
         props.login()
@@ -14,27 +18,68 @@ function Nav(props) {
     }
 
     return (
-        <nav className="navbar navbar-light bg-light">
-            <form>
-                <h2 className="text-center" style={{ fontFamily: "Fredoka One", alignSelf: "center" }}>Yet To-dos</h2>
-            </form>
-            <span className="navbar-text">
-
-                {props.active ? <Fragment><button onClick={logout} style={{ marginTop: "-25px", padding: "3px" }} class="btn btn-outline-dark">Log Out</button> &emsp; <Link to="/post">
-                    <button style={{ marginTop: "-25px", marginLeft: "5px", padding: "3px" }}
-                        class="btn btn-outline-dark">
-                        Add item
+        <div>
+            <nav className="navigation">
+                <div className="nav-center">
+                    <div className="nav-header">
+                        <h2 className="nav-brand" style={{ fontFamily: "Fredoka One" }}>
+                            Yet Todos
+                        </h2>
+                        <button
+                            style={{ backgroundColor: "antiquewhite" }}
+                            className="nav-toggle"
+                            onClick={toggleClass}
+                        >
+                            <i
+                                className="fas fa-bars"
+                                style={{ color: "black", background: "transparent" }}
+                            ></i>
+                        </button>
+                    </div>
+                    <ul className={isActive ? "links show-links" : "links"}>
+                        {props.active ? <Fragment><button onClick={logout} style={{
+                            backgroundColor: "antiquewhite",
+                            color: "black",
+                            borderRadius: ".5rem",
+                            border: "1px solid black",
+                            padding: ".5rem 1.5rem .5rem 1.5rem",
+                            maxWidth: "140px",
+                            margin: "1rem 1rem 1rem 0rem",
+                            height: "40px",
+                            width: "200px"
+                        }}
+                        >Log Out</button> <Link to="/post">
+                                <button style={{
+                                    backgroundColor: "antiquewhite",
+                                    color: "black",
+                                    borderRadius: ".5rem",
+                                    border: "1px solid black",
+                                    padding: ".5rem 1.5rem .5rem 1.5rem",
+                                    maxWidth: "140px",
+                                    margin: "1rem 1rem 1rem 0rem",
+                                    height: "40px",
+                                    width: "200px",
+                                }}
+                                    className="hover-on"
+                                >
+                                    Add item
                     </button>
-                </Link></Fragment> : <button onClick={login} style={{ marginTop: "-25px", padding: "3px" }} class="btn btn-outline-dark">Login</button>}
+                            </Link></Fragment> : <button onClick={login} style={{
+                                backgroundColor: "antiquewhite",
+                                color: "black",
+                                borderRadius: ".5rem",
+                                border: "1px solid black",
+                                padding: ".5rem 1.5rem .5rem 1.5rem",
+                                maxWidth: "140px",
+                                margin: "1rem 1rem 1rem 0rem",
+                                height: "40px"
+                            }} >Login</button>}
 
-                 &emsp;
-                <a href="https://github.com/parthpandyappp/">
-                    <i class="fa fa-github" style={{ fontSize: 50 }}></i>
-                </a>
-            </span>
+                    </ul>
+                </div>
+            </nav>
+        </div >
+    );
+};
 
-        </nav>
-    )
-}
-
-export default Nav
+export default Nav;

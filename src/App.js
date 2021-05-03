@@ -3,7 +3,8 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import firebase from './firebase.js';
 import Main from './main.js';
-import Postform from './post.js'
+import Postform from './post.js';
+import Footer from "./footer.js"
 
 const auth = firebase.auth()
 const provider = new firebase.auth.GoogleAuthProvider();
@@ -39,6 +40,7 @@ export default function App() {
           <Route exact path="/" component={() => <Main isAuthed={user} {...{ login }} {...{ logout }} uid={uid} />} />
         </Switch>
       </main>
+      <Footer />
     </Router>
   )
 

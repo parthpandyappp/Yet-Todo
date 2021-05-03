@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import firebase from './firebase.js';
-import "./Css/post-form.css";
+import "./css/post-form.css";
 
 export default function Postform(props) {
 
