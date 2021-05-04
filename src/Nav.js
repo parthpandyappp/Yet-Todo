@@ -9,11 +9,11 @@ const Nav = (props) => {
         setActive(!isActive);
     };
 
-    login = () => {
+    const login = () => {
         props.login()
     }
 
-    logout = () => {
+    const logout = () => {
         props.logout()
     }
 
